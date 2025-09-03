@@ -1,13 +1,50 @@
+import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
+const pomodoro = [
+  {
+    id: 'focus',
+    initialValue: 25,
+    image: require('./pomodoro.png'),
+    display: 'Foco'
+  },
+  {
+    id: 'short',
+    initialValue: 5,
+    image: require('./short rest.png'),
+    display: 'Pausa curta'
+  },
+  {
+    id: 'long',
+    initialValue: 15,
+    image: require('./long rest.png'),
+    display: 'Pausa longa'
+  }
+]
+
 export default function Index() {
+  const [timerType, setTimerType] = useState(pomodoro[0]);
+
   return (
     <View
       style={styles.container}
     >
-      <Image source={require('./pomodoro.png')}/>
+      <Image source={timerType.image}/>
       <View style={styles.actions}>
-        <Text style={styles.timer}>25:00</Text>
+        <View style={styles.context}>
+          {pomodoro.map(p => (
+          <Pressable 
+            key={p.id} 
+            style={timerType.id === p.id ? styles.contextButtonActive : null}
+            onPress={() => setTimerType(p)}
+          >
+            <Text style={styles.contextButtonText}>{p.display}</Text>
+          </Pressable>
+          ))}
+        </View>
+        <Text style={styles.timer}>
+          { new Date(timerType.initialValue*1000).toLocaleTimeString('pt-BR', { minute: '2-digit', second: '2-digit' }) }
+        </Text>
         <Pressable style={styles.button}>
           <Text style={styles.buttonText}>Começar</Text>
         </Pressable>
@@ -38,11 +75,25 @@ const styles = StyleSheet.create({
     borderColor: "#144480",
     gap: 32
   },
+  context: {
+    flexDirection: "row",
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  contextButtonActive: {
+    backgroundColor: '#144480',
+    borderRadius: 8
+  },
+  contextButtonText: {
+    color: "#FFF",
+    fontSize: 12.5,
+    padding: 8
+  },
   timer: {
     fontSize: 54,
-    color: "#fff",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: '#FFF',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   button: {
     backgroundColor: "#BB72FF",
