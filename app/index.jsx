@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { ActionButton } from "../components/ActionButton";
 import { FokusButton } from "../components/FokusButton";
@@ -26,7 +26,48 @@ const pomodoro = [
 ]
 
 export default function Index() {
-  const [timerType, setTimerType] = useState(pomodoro[0]);
+  const [timerType, setTimerType] = useState(pomodoro[0]) //timerType: foco, curto, longo
+  const [seconds, setSeconds] = useState(pomodoro[0].initialValue) // segundos
+  const [timerRunning, setTimerRunning] = useState(false) //se o timer está rodando ou não
+
+
+  const timerRef = useRef(null)
+
+  const clear = () => { //limpeza 
+    if (timerRef.current != null) {
+      clearInterval(timerRef.current)
+      timerRef.current = null
+      setTimerRunning (false)
+    }
+  }
+
+  const toggleTimerType = (newTimerType) => { //troca o tipo do timer: foco, longa e curta
+    setTimerType(newTimerType)
+    setSeconds(newTimerType.initialValue)
+    clear()
+  }
+
+  const toggleTimer = () => {
+    if (timerRef.current) { //pausar
+      clear()
+      return
+    }
+    setTimerRunning (true) //rodar
+
+    const id = setInterval(() => {
+      setSeconds(oldState => {
+        if (oldState === 0) {
+          clear()
+          return timerType.initialValue
+        }
+        return oldState - 1
+      })
+      console.log('timer rolando')
+    }, 1000)
+    timerRef.current = id
+  }
+
+
 
   return (
     <View
@@ -39,13 +80,13 @@ export default function Index() {
             <ActionButton
               key={p.id}
               active={timerType.id === p.id}
-              onPress={() => setTimerType(p)}
+              onPress={() => toggleTimerType(p)}
               display={p.display}
             />
           ))}
         </View>
-        <Timer totalSeconds={timerType.initialValue} />
-        <FokusButton />
+        <Timer totalSeconds={seconds} />
+        <FokusButton title={timerRunning ? 'Pausar' : 'Começar'} onPress={toggleTimer}/>
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Projeto fictício sem fins comerciais.</Text>
