@@ -5,15 +5,15 @@ export default function Index(){
   return(
     <View style={styles.container}>
       <Image source={require('../assets/images/logo.png')} />
-      <View>
+      <View style={styles.inner}>
         <Text style={styles.title}>
-          Otimize sua {'\n'}produtividade,
+          Otimize sua {'\n'}produtividade, {'\n'}
           <Text style={styles.bold}>
             mergulhe no que {'\n'}importa
           </Text>
         </Text>
         <Image source={require('../assets/images/telaInicial.png')} />
-        <FokusButton title="Quero iniciar!"/> 
+        <FokusButton title="Quero iniciar!" onPress={()=> console.log('navegar')}/> 
       </View>
       <View style={styles.footer}>
           <Text style={styles.footerText}>Projeto fictício sem fins comerciais.</Text>
@@ -26,18 +26,21 @@ export default function Index(){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: center,
-    alignItems: center,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: "#021123",
     gap: 40
   },
+  inner: {
+    gap: 30
+  },
   title: {
     color: '#FFF',
-    textAlign: center,
+    textAlign: 'center',
     fontSize: 26
   },
   bold: {
-    fontWeight: bold
+    fontWeight: 'bold'
   },
   footer: {
     width: '80%',
@@ -45,6 +48,6 @@ const styles = StyleSheet.create({
   footerText: {
     color: "#98A0A8",
     fontSize: 12.5,
-    textAlign: center
+    textAlign: 'center'
   }
 });
