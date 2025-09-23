@@ -1,50 +1,25 @@
-# Welcome to your Expo app 👋
+# Projeto Pomodoro Fokus – React Native  
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Neste curso de React Native, desenvolvi o projeto **Pomodoro Fokus**, que foi essencial para meus estudos e também para adquirir habilidades práticas voltadas ao desenvolvimento do meu TCC no curso de **Análise e Desenvolvimento de Sistemas na FATEC-RL**.  
 
-## Get started
+Ao longo do projeto, aprofundei meus conhecimentos no funcionamento do React Native e aprendi a construir interfaces dinâmicas e interativas, voltadas para dispositivos móveis.  
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## O que aprendi no curso  
 
-2. Start the app
+- Implementar funções de **toggle** para iniciar e pausar um timer utilizando `useRef`.  
+- Trabalhar com **`setInterval` e `clearInterval`** para controlar a execução periódica de código.  
+- Manipular e atualizar dinamicamente o **texto de botões** com base no estado da aplicação.  
+- Entender as diferenças de comportamento entre **`useState` e `useRef`** dentro do React.  
+- Utilizar bibliotecas específicas, como **React Native SVG**, para manipulação de SVGs em projetos mobile.  
+- Instalar bibliotecas no **Expo** de forma prática usando `npx expo install`.  
+- Ajustar dinamicamente **ícones** de acordo com o estado do timer, tornando a experiência mais interativa e intuitiva.  
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## Conclusão  
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Esse projeto me ajudou a entender na prática como aplicar conceitos fundamentais do React Native no desenvolvimento de aplicativos reais.  
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Além disso, fortaleceu minha base para trabalhar com **gerenciamento de estado**, **interatividade** e **instalação de bibliotecas**, o que será extremamente útil nos meus próximos projetos e no meu **TCC**.  
