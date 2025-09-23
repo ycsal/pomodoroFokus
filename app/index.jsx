@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { FokusButton } from "../components/FokusButton";
 
@@ -13,7 +14,9 @@ export default function Index(){
           </Text>
         </Text>
         <Image source={require('../assets/images/telaInicial.png')} />
-        <FokusButton title="Quero iniciar!" onPress={()=> console.log('navegar')}/> 
+        <FokusButton title="Quero iniciar!" onPress={()=> router.navigate('/pomodoro') }/> 
+        {/*<FokusButton title="Quero iniciar!" onPress={()=> router.replace('/pomodoro') }/>  para ir pra tela e nao voltar
+        e o .navigate é = ao .push*/}
       </View>
       <View style={styles.footer}>
           <Text style={styles.footerText}>Projeto fictício sem fins comerciais.</Text>
