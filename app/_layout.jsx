@@ -1,4 +1,4 @@
-{/*import { Stack } from 'expo-router/stack';
+/*import { Stack } from 'expo-router/stack';
 
 export default function Layout() {
   return (<Stack>
@@ -7,12 +7,15 @@ export default function Layout() {
       options={{ headerShown: false }}
     />
     </Stack>);
-}*/}
+}*/
 
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function Layout() {
+  const router = useRouter();
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
@@ -21,6 +24,7 @@ export default function Layout() {
           headerTintColor: '#fff',
           drawerStyle: { backgroundColor: '#021123' },
           drawerLabelStyle: { color: '#fff' },
+          headerShadowVisible: false
         }}
       >
         <Drawer.Screen
@@ -30,7 +34,12 @@ export default function Layout() {
         />
         <Drawer.Screen
           name="add-task/index"
-          options={{ drawerItemStyle: { display: 'none' } }} 
+          options={{ drawerItemStyle: { display: 'none' }, 
+          title: '', 
+          headerLeft: ()=>{
+            return <Ionicons name='arrow-back' size={24} color='#FFF' style={{marginLeft: 16}} onPress={() => router.navigate('/tasks')}/>
+          }
+        }} 
         />
         <Drawer.Screen
           name="pomodoro"
